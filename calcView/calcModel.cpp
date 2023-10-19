@@ -115,23 +115,23 @@ void CalcModel::solutionFunction() {
     double num = stack_.top().toDouble();
 
     if (output_.front() == "sin") {
-      stack_.top() = QString::number(std::sin(num));
+      stack_.top() = QString::number(std::sin(num), 'g', 9);
     } else if (output_.front() == "cos") {
-      stack_.top() = QString::number(std::cos(num));
+      stack_.top() = QString::number(std::cos(num), 'g', 9);
     } else if (output_.front() == "tan") {
-      stack_.top() = QString::number(std::tan(num));
+      stack_.top() = QString::number(std::tan(num), 'g', 9);
     } else if (output_.front() == "asin") {
-      stack_.top() = QString::number(std::asin(num));
+      stack_.top() = QString::number(std::asin(num), 'g', 9);
     } else if (output_.front() == "acos") {
-      stack_.top() = QString::number(std::acos(num));
+      stack_.top() = QString::number(std::acos(num), 'g', 9);
     } else if (output_.front() == "atan") {
-      stack_.top() = QString::number(std::atan(num));
+      stack_.top() = QString::number(std::atan(num), 'g', 9);
     } else if (output_.front() == "sqrt") {
-      stack_.top() = QString::number(pow(num, 0.5));
+      stack_.top() = QString::number(pow(num, 0.5), 'g', 9);
     } else if (output_.front() == "ln") {
-      stack_.top() = QString::number(std::log(num));
+      stack_.top() = QString::number(std::log(num), 'g', 9);
     } else if (output_.front() == "log") {
-      stack_.top() = QString::number(std::log10(num));
+      stack_.top() = QString::number(std::log10(num), 'g', 9);
     }
   }
 }
@@ -139,7 +139,7 @@ void CalcModel::solutionFunction() {
 void CalcModel::solutionOperator() {
   if (output_.front() == '~') {
     double num = stack_.top().toDouble();
-    stack_.top() = QString::number(num * (-1));
+    stack_.top() = QString::number(num * (-1), 'g', 9);
   }
   if (priority_[output_.front()] == 1 || priority_[output_.front()] == 2 ||
       priority_[output_.front()] == 4) {
@@ -148,17 +148,17 @@ void CalcModel::solutionOperator() {
     double num1 = stack_.top().toDouble();
 
     if (output_.front() == '+') {
-      stack_.top() = QString::number(num1 + num2);
+      stack_.top() = QString::number(num1 + num2, 'g', 9);
     } else if (output_.front() == '-') {
-      stack_.top() = QString::number(num1 - num2);
+      stack_.top() = QString::number(num1 - num2, 'g', 9);
     } else if (output_.front() == '*') {
-      stack_.top() = QString::number(num1 * num2);
+      stack_.top() = QString::number(num1 * num2, 'g', 9);
     } else if (output_.front() == '/') {
-      stack_.top() = QString::number(num1 / num2);
+      stack_.top() = QString::number(num1 / num2, 'g', 9);
     } else if (output_.front() == "mod") {
-      stack_.top() = QString::number(std::fmod(num1, num2));
+      stack_.top() = QString::number(std::fmod(num1, num2), 'g', 9);
     } else if (output_.front() == '^') {
-      stack_.top() = QString::number(pow(num1, num2));
+      stack_.top() = QString::number(pow(num1, num2), 'g', 9);
     }
   }
 }
@@ -167,7 +167,7 @@ void CalcModel::solution() {
   while (!output_.isEmpty()) {
     if (isDigit(output_.front())) {
       if (output_.front() == "X") {
-        stack_.push(QString::number(x_value_));
+        stack_.push(QString::number(x_value_, 'g', 9));
       } else {
         stack_.push(output_.front());
       }
