@@ -297,6 +297,11 @@ void CalcView::on_graph_clicked() {
     double yStart = ui->yStart->text().toDouble();
     double yEnd = ui->yEnd->text().toDouble();
 
+    if (xStart > xEnd) {
+        std::swap(xStart, xEnd);
+    } else if (yStart > yEnd) {
+        std::swap(yStart, yEnd);
+    }
     ui->widget->xAxis->setRange(xStart, xEnd);
     ui->widget->yAxis->setRange(yStart, yEnd);
     QVector<double> x, y;
