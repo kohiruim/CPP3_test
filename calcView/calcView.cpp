@@ -1,4 +1,5 @@
 #include "calcView.h"
+
 #include "ui_calcView.h"
 
 namespace s21 {
@@ -11,20 +12,22 @@ CalcView::CalcView(QWidget *parent)
       ui_->four,  ui_->five, ui_->six,         ui_->seven,
       ui_->eight, ui_->nine, ui_->openBracket, ui_->closingBracket};
   QVector<QPushButton *> button_functions{ui_->sin,  ui_->asin, ui_->cos,
-                                         ui_->acos, ui_->tan,  ui_->atan,
-                                         ui_->ln,   ui_->log,  ui_->sqrt};
+                                          ui_->acos, ui_->tan,  ui_->atan,
+                                          ui_->ln,   ui_->log,  ui_->sqrt};
   QVector<QPushButton *> button_operator{ui_->plus,   ui_->minus, ui_->multiply,
-                                        ui_->divide, ui_->mod,   ui_->power,
-                                        ui_->dot};
+                                         ui_->divide, ui_->mod,   ui_->power,
+                                         ui_->dot};
 
   for (int i = 0; i < button_value.size(); i++) {
     connect(button_value[i], SIGNAL(clicked()), this, SLOT(printButtonValue()));
   }
   for (int i = 0; i < button_functions.size(); i++) {
-    connect(button_functions[i], SIGNAL(clicked()), this, SLOT(onFunctionClicked()));
+    connect(button_functions[i], SIGNAL(clicked()), this,
+            SLOT(onFunctionClicked()));
   }
   for (int i = 0; i < button_operator.size(); i++) {
-    connect(button_operator[i], SIGNAL(clicked()), this, SLOT(onOperatorClicked()));
+    connect(button_operator[i], SIGNAL(clicked()), this,
+            SLOT(onOperatorClicked()));
   }
   connect(ui_->X, SIGNAL(clicked()), this, SLOT(onXClicked()));
   connect(ui_->dot, SIGNAL(clicked()), this, SLOT(onDotClicked()));
@@ -42,7 +45,8 @@ void CalcView::printButtonValue() {
   QString input_str = ui_->input->text();
   int len = input_str.length();
   int count_open_bracker = std::count(input_str.begin(), input_str.end(), '(');
-  int count_closing_bracker = std::count(input_str.begin(), input_str.end(), ')');
+  int count_closing_bracker =
+      std::count(input_str.begin(), input_str.end(), ')');
 
   if (len < 256) {
     if (button->text() == '(') {
@@ -294,27 +298,28 @@ void CalcView::onEqualsClicked() {
 }
 
 bool CalcView::checkGraphInput(QVector<QString> values) {
-    bool result = true;
+  bool result = true;
 
-    for (int i=0; i<values.size() && result; i++) {
-        if (!validNum(values[i]) || abs(values[i].toDouble())>1000000) {
-            result = false;
-        }
+  for (int i = 0; i < values.size() && result; i++) {
+    if (!validNum(values[i]) || abs(values[i].toDouble()) > 1000000) {
+      result = false;
     }
-    return result;
+  }
+  return result;
 }
 
 void CalcView::onGraphClicked() {
   if (checkLastElement(ui_->input->text())) {
     QMessageBox msgBox;
-    QVector<QString> values = {ui_->x_start->text(), ui_->x_end->text(), ui_->y_start->text(), ui_->y_end->text()};
+    QVector<QString> values = {ui_->x_start->text(), ui_->x_end->text(),
+                               ui_->y_start->text(), ui_->y_end->text()};
     QVector<double> x, y;
     ui_->widget->clearGraphs();
     ui_->widget->replot();
 
     if (!checkGraphInput(values)) {
-        msgBox.setText("Область определения и значения дб числами до +-1000000");
-        msgBox.exec();
+      msgBox.setText("Область определения и значения дб числами до +-1000000");
+      msgBox.exec();
     }
 
     double x_start = values[0].toDouble();
@@ -323,15 +328,16 @@ void CalcView::onGraphClicked() {
     double y_end = values[3].toDouble();
 
     if (x_start > x_end) {
-        std::swap(x_start, x_end);
+      std::swap(x_start, x_end);
     } else if (y_start > y_end) {
-        std::swap(y_start, y_end);
+      std::swap(y_start, y_end);
     }
 
     ui_->widget->xAxis->setRange(x_start, x_end);
     ui_->widget->yAxis->setRange(y_start, y_end);
 
-    controller_.makeGraph(x, y, x_start, x_end, y_start, y_end, ui_->input->text());
+    controller_.makeGraph(x, y, x_start, x_end, y_start, y_end,
+                          ui_->input->text());
 
     ui_->widget->addGraph();
     ui_->widget->graph(0)->addData(x, y);
@@ -342,4 +348,4 @@ void CalcView::onGraphClicked() {
     ui_->widget->replot();
   }
 }
-}
+}  // namespace s21

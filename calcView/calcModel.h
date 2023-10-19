@@ -17,7 +17,7 @@ class CalcModel {
   void toPostfix();
   void solution();
   QString getResult();
-  void makeGraph(QVector<double>& x, QVector<double>& y, double x_start,
+  void makeGraph(QVector<double> &x, QVector<double> &y, double x_start,
                  double x_end, double y_start, double y_end, QString input);
 
  private:
@@ -41,6 +41,6 @@ class CalcModel {
   void solutionFunction();
   void solutionOperator();
 };
-}
+}  // namespace s21
 
 #endif  // CALCMODEL_H

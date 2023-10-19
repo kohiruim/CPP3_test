@@ -12,6 +12,7 @@ SOURCES += \
     calcController.cpp \
     calcModel.cpp \
     calcView.cpp \
+    creditView.cpp \
     main.cpp \
     qcustomplot.cpp
 
@@ -19,10 +20,12 @@ HEADERS += \
     calcController.h \
     calcModel.h \
     calcView.h \
+    creditView.h \
     qcustomplot.h
 
 FORMS += \
-    calcView.ui
+    calcView.ui \
+    creditView.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

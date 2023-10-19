@@ -2,9 +2,10 @@
 #define CALCVIEW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QVector>
 #include <limits>
-#include <QMessageBox>
+
 #include "calcController.h"
 
 QT_BEGIN_NAMESPACE
@@ -40,5 +41,5 @@ class CalcView : public QMainWindow {
   bool checkLastElement(QString input);
   bool checkGraphInput(QVector<QString> values);
 };
-}
+}  // namespace s21
 #endif  // CALCVIEW_H

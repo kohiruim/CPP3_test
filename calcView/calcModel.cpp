@@ -180,9 +180,9 @@ void CalcModel::solution() {
   stack_.pop();
 }
 
-void CalcModel::makeGraph(QVector<double>& x, QVector<double>& y, double x_start,
-                          double x_end, double y_start, double y_end,
-                          QString input) {
+void CalcModel::makeGraph(QVector<double>& x, QVector<double>& y,
+                          double x_start, double x_end, double y_start,
+                          double y_end, QString input) {
   x.clear();
   y.clear();
   input_ = input;
@@ -206,4 +206,4 @@ void CalcModel::makeGraph(QVector<double>& x, QVector<double>& y, double x_start
     }
   }
 }
-}
+}  // namespace s21
