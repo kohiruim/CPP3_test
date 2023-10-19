@@ -1385,7 +1385,7 @@ border-top-right-radius:10%;
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="2">
-     <widget class="QLineEdit" name="xStart">
+     <widget class="QLineEdit" name="x_start">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -1440,7 +1440,7 @@ padding: 5px;
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QLineEdit" name="yStart">
+     <widget class="QLineEdit" name="y_start">
       <property name="minimumSize">
        <size>
         <width>100</width>
@@ -1599,7 +1599,7 @@ padding: 5px;
      </widget>
     </item>
     <item row="0" column="4">
-     <widget class="QLineEdit" name="xEnd">
+     <widget class="QLineEdit" name="x_end">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -1631,7 +1631,7 @@ padding: 5px;
      </widget>
     </item>
     <item row="1" column="4">
-     <widget class="QLineEdit" name="yEnd">
+     <widget class="QLineEdit" name="y_end">
       <property name="minimumSize">
        <size>
         <width>0</width>

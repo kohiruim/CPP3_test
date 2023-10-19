@@ -2,7 +2,7 @@
 
 void CalcModel::setInput(QString input) { input_ = input; }
 
-void CalcModel::setXvalue(QString input) { xvalue = input.toDouble(); }
+void CalcModel::setXvalue(QString input) { x_value_ = input.toDouble(); }
 
 QString CalcModel::getResult() { return result_; }
 
@@ -167,7 +167,7 @@ void CalcModel::solution() {
   while (!output_.isEmpty()) {
     if (isDigit(output_.front())) {
       if (output_.front() == "X") {
-        stack_.push(QString::number(xvalue));
+        stack_.push(QString::number(x_value_));
       } else {
         stack_.push(output_.front());
       }
@@ -180,23 +180,23 @@ void CalcModel::solution() {
   stack_.pop();
 }
 
-void CalcModel::makeGraph(QVector<double>& x, QVector<double>& y, double xStart,
-                          double xEnd, double yStart, double yEnd,
+void CalcModel::makeGraph(QVector<double>& x, QVector<double>& y, double x_start,
+                          double x_end, double y_start, double y_end,
                           QString input) {
   x.clear();
   y.clear();
   input_ = input;
-  double h = (xEnd - xStart) / 20000;
+  double h = (x_end - x_start) / 20000;
 
-  for (double X = xStart; X <= xEnd; X += h) {
-    xvalue = X;
+  for (double X = x_start; X <= x_end; X += h) {
+    x_value_ = X;
     toPostfix();
     solution();
 
     double yValue = result_.toDouble();
 
     if (!std::isnan(yValue)) {
-      if (yValue >= yStart && yValue <= yEnd) {
+      if (yValue >= y_start && yValue <= y_end) {
         x.push_back(X);
         y.push_back(yValue);
       }

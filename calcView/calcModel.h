@@ -16,15 +16,15 @@ class CalcModel {
   void toPostfix();
   void solution();
   QString getResult();
-  void makeGraph(QVector<double>& x, QVector<double>& y, double xStart,
-                 double xEnd, double yStart, double yEnd, QString input);
+  void makeGraph(QVector<double>& x, QVector<double>& y, double x_start,
+                 double x_end, double y_start, double y_end, QString input);
 
  private:
   QString input_;
   QStack<QString> stack_;
   QQueue<QString> output_;
   QString result_ = "";
-  double xvalue = 0;
+  double x_value_ = 0;
   QMap<QString, int> priority_ = {
       {"+", 1},   {"-", 1},    {"*", 2},    {"/", 2},    {"mod", 2},
       {"#", 3},   {"~", 3},    {"^", 4},    {"sin", 5},  {"cos", 5},

@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <limits>
-
+#include <QMessageBox>
 #include "calcController.h"
 
 QT_BEGIN_NAMESPACE
@@ -20,21 +20,23 @@ class CalcView : public QMainWindow {
   CalcView(QWidget *parent = nullptr);
   ~CalcView();
  private slots:
+  void onDotClicked();
+  void onACClicked();
+  void onCEClicked();
+  void onXClicked();
   void printButtonValue();
-  void printX();
-  void printOperator();
-  void printFunction();
-  void on_dot_clicked();
-  void on_AC_clicked();
-  void on_CE_clicked();
-  void on_equals_clicked();
-  bool validX(QString input);
-  void on_graph_clicked();
-  bool check_last_element(QString input);
   void printUnary();
+  void onOperatorClicked();
+  void onFunctionClicked();
+  void onEqualsClicked();
+  void onGraphClicked();
 
  private:
-  Ui::CalcView *ui;
+  Ui::CalcView *ui_;
   CalcController controller_;
+
+  bool validNum(QString input);
+  bool checkLastElement(QString input);
+  bool checkGraphInput(QVector<QString> values);
 };
 #endif  // CALCVIEW_H
