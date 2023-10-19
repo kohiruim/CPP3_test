@@ -25,7 +25,6 @@ void CalcModel::toPostfix() {
     output_.push_back(stack_.top());
     stack_.pop();
   }
-  qDebug() << output_;
 }
 
 size_t CalcModel::readOperator(size_t index) {
