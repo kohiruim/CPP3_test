@@ -1,5 +1,5 @@
 #include "calcModel.h"
-
+namespace s21 {
 void CalcModel::setInput(QString input) { input_ = input; }
 
 void CalcModel::setXvalue(QString input) { x_value_ = input.toDouble(); }
@@ -205,4 +205,5 @@ void CalcModel::makeGraph(QVector<double>& x, QVector<double>& y, double x_start
       y.push_back(std::numeric_limits<double>::quiet_NaN());
     }
   }
+}
 }

@@ -7,6 +7,7 @@
 #include <Qstack>
 #include <algorithm>
 
+namespace s21 {
 class CalcModel {
  public:
   CalcModel() = default;
@@ -40,5 +41,6 @@ class CalcModel {
   void solutionFunction();
   void solutionOperator();
 };
+}
 
 #endif  // CALCMODEL_H

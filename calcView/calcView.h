@@ -13,6 +13,7 @@ class CalcView;
 }
 QT_END_NAMESPACE
 
+namespace s21 {
 class CalcView : public QMainWindow {
   Q_OBJECT
 
@@ -39,4 +40,5 @@ class CalcView : public QMainWindow {
   bool checkLastElement(QString input);
   bool checkGraphInput(QVector<QString> values);
 };
+}
 #endif  // CALCVIEW_H

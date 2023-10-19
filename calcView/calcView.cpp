@@ -1,6 +1,7 @@
 #include "calcView.h"
 #include "ui_calcView.h"
 
+namespace s21 {
 CalcView::CalcView(QWidget *parent)
     : QMainWindow(parent), ui_(new Ui::CalcView) {
   ui_->setupUi(this);
@@ -340,4 +341,5 @@ void CalcView::onGraphClicked() {
         QCPScatterStyle(QCPScatterStyle::ssDisc, 3));
     ui_->widget->replot();
   }
+}
 }

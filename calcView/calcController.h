@@ -2,6 +2,7 @@
 #define CALCCONTROLLER_H
 #include "calcModel.h"
 
+namespace s21 {
 class CalcController {
  public:
   CalcController() = default;
@@ -13,5 +14,6 @@ class CalcController {
  private:
   CalcModel model_;
 };
+}
 
 #endif  // CALCCONTROLLER_H
